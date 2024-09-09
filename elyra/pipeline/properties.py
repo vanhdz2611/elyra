@@ -41,6 +41,7 @@ from elyra.pipeline.pipeline_constants import KUBERNETES_SECRETS
 from elyra.pipeline.pipeline_constants import KUBERNETES_SHARED_MEM_SIZE
 from elyra.pipeline.pipeline_constants import KUBERNETES_TOLERATIONS
 from elyra.pipeline.pipeline_constants import MOUNTED_VOLUMES
+from elyra.pipeline.pipeline_constants import UPLOAD_FILE
 from elyra.pipeline.pipeline_constants import PIPELINE_PARAMETERS
 from elyra.pipeline.runtime_type import RuntimeProcessorType
 from elyra.util.kubernetes import is_valid_annotation_key
@@ -670,7 +671,7 @@ class VolumeMount(ElyraPropertyListItem):
     applies_to_custom = True
 
     property_id = MOUNTED_VOLUMES
-    property_display_name = "Data Volumes"
+    property_display_name = "hihi"
     property_description = """Volumes to be mounted in this node. The specified Persistent Volume Claims
     must exist in the Kubernetes namespace where the node is executed or this node will not run."""
     property_attributes = [
@@ -744,6 +745,46 @@ class VolumeMount(ElyraPropertyListItem):
         # ignore the read_only attribute because it always contains a value
         return not (self.path or self.pvc_name or self.sub_path)
 
+
+class UploadFileProperty(ElyraPropertyListItem):
+    """An ElyraProperty representing a file upload field"""
+
+    applies_to_generic = True
+    applies_to_custom = True
+
+    property_id = UPLOAD_FILE
+    property_display_name = "Upload File"
+    property_description = "Upload a file to be used in the pipeline."
+
+    property_attributes = [
+        ListItemPropertyAttribute(
+            attribute_id="file_path",
+            display_name="File Path",
+            allowed_input_types=[PropertyInputType(base_type="str", placeholder="Path to file")],
+            hidden=False,
+            required=True,
+            use_in_key=True,
+        ),
+    ]
+
+    def __init__(self, file_path: str, **kwargs):
+        self.file_path = file_path
+
+    def get_value_for_display(self) -> Dict[str, Any]:
+        return {"file_path": self.file_path}
+
+    def get_all_validation_errors(self) -> List[str]:
+        validation_errors = []
+        if not self.file_path:
+            validation_errors.append("File path is required.")
+        return validation_errors
+
+    def add_to_execution_object(self, runtime_processor: RuntimePipelineProcessor, execution_object: Any, **kwargs):
+        runtime_processor.add_file(instance=self, execution_object=execution_object, **kwargs)
+
+ 
+
+    
 
 class KubernetesAnnotation(ElyraPropertyListItem):
     """An ElyraProperty representing a single Kubernetes annotation"""

@@ -91,7 +91,7 @@ Each pipeline node is configured using properties. Default node properties are a
 
 **Default properties that apply to all nodes**
 
- - [Data volumes](#data-volumes)
+ - [hihi](#data-volumes)
  - [Kubernetes tolerations](#kubernetes-tolerations)
  - [Kubernetes pod annotations](#kubernetes-pod-annotations)
  - [Kubernetes pod labels](#kubernetes-pod-labels)
@@ -177,7 +177,7 @@ Nodes that are implemented using [generic components](pipeline-components.html#g
    - [Environment variables](l#environment-variables)
    - [Kubernetes secrets](#kubernetes-secrets)
    - [Output files](#output-files)
-   - [Data volumes](#data-volumes)
+   - [hihi](#data-volumes)
    - [Kubernetes tolerations](#kubernetes-tolerations)
    - [Kubernetes pod annotations](#kubernetes-pod-annotations)
    - [Kubernetes pod labels](#kubernetes-pod-labels)
@@ -187,7 +187,7 @@ Nodes that are implemented using [generic components](pipeline-components.html#g
 
 Nodes that are implemented using [custom components](pipeline-components.html#custom-components) are configured using these properties:
 
-   - [Data volumes](#data-volumes)
+   - [hihi](#data-volumes)
    - [Kubernetes tolerations](#kubernetes-tolerations)
    - [Kubernetes pod annotations](#kubernetes-pod-annotations)
    - [Kubernetes pod labels](#kubernetes-pod-labels)
@@ -230,14 +230,14 @@ Each pipeline node can be associated with comments to describe its purpose.
 
 The following alphabetically sorted list identifies the node properties that are supported in this Elyra release. 
 
-##### Data volumes
+##### hihi
    - A list of [Persistent Volume Claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) (PVC) to be mounted into the container that executes the component. 
    - Format: 
      - _Mount path_: the path where the PVC shall be mounted in the container. Example: `/mnt/datavol/`
      - _Persistent volume claim name_: a valid [Kubernetes resource name](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names) identifying a PVC that exists in the Kubernetes namespace where the pipeline nodes are executed. Example: `my-data-pvc`
      - _Sub path_: relative path within the volume from which the container's volume should be mounted. Defaults to the volume's root. Example: `existing/path/in/volume`
      - _Mount volume read-only_: whether to mount the volume in read-only mode
-   - Data volumes are not mounted when the pipeline is executed locally.
+   - hihi are not mounted when the pipeline is executed locally.
 
 ##### Disable node caching
    - Pipeline nodes produce output, such as files. Some runtime environments support caching of these outputs, eliminating the need to re-execute nodes, which can improve performance and reduce resource usage. If a node does not produce output in a deterministic way - that is, when given the same inputs, the generated output is different - re-using the output from previous executions might lead to unexpected results.
@@ -453,7 +453,7 @@ The pipeline dependencies output includes:
  - Python or R scripts
  - Local files that the notebooks or scripts require
  - Custom components 
- - Data volumes that custom and generic nodes are mounting
+ - hihi that custom and generic nodes are mounting
  - Container images that generic nodes are using to run notebooks or scripts 
  - Kubernetes secrets that generic nodes are exposing as environment variables to notebooks or scripts
 

@@ -731,3 +731,5 @@ class ManifestFileChangeHandler(FileSystemEventHandler):
 
                 self.component_cache.update(catalog=catalog_instance, action=action)
             self.component_cache.update_manifest(filename=event.src_path)  # clear the manifest
+
+

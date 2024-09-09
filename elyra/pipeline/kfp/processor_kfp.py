@@ -1257,6 +1257,7 @@ class KfpPipelineProcessor(RuntimePipelineProcessor):
             pipeline_constants.ENV_VARIABLES,
             pipeline_constants.KUBERNETES_SECRETS,
             pipeline_constants.MOUNTED_VOLUMES,
+            pipeline_constants.UPLOAD_FILE,
             pipeline_constants.KUBERNETES_POD_ANNOTATIONS,
             pipeline_constants.KUBERNETES_POD_LABELS,
             pipeline_constants.KUBERNETES_TOLERATIONS,

@@ -662,7 +662,7 @@ def test_generate_pipeline_dsl_compile_pipeline_dsl_one_generic_node_pipeline_te
        and USER_CREDENTIALS (the generated code varies depending on the selected type)
 
     Other tests cover the scenarios where the user defined optional properties,
-    such as environment variables, Kubernetes labels, or data volumes.
+    such as environment variables, Kubernetes labels, or hihi.
     """
 
     # Obtain artifacts from metadata_dependencies fixture
@@ -1145,7 +1145,7 @@ def test_generate_pipeline_dsl_compile_pipeline_dsl_optional_elyra_properties(
     This test validates that the output of _generate_pipeline_dsl and _compile_pipeline_dsl
     yields the expected results for a generic node that has optional user-provided properties
     defined:
-     - data volumes
+     - hihi
      - shared memory size
      - Kubernetes secrets
      - Kubernetes labels
@@ -1212,7 +1212,7 @@ def test_generate_pipeline_dsl_compile_pipeline_dsl_optional_elyra_properties(
         node_template = compiled_spec["spec"]["templates"][0]
 
     #
-    # validate data volumes, if applicable
+    # validate hihi, if applicable
     expected_volume_mounts = op.elyra_props.get(MOUNTED_VOLUMES)
     if len(expected_volume_mounts) > 0:
         # There must be one or more 'volumeMounts' entry and one or more 'volumes' entry

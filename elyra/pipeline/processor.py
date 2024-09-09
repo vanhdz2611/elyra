@@ -48,7 +48,10 @@ from elyra.pipeline.properties import KubernetesAnnotation
 from elyra.pipeline.properties import KubernetesLabel
 from elyra.pipeline.properties import KubernetesSecret
 from elyra.pipeline.properties import KubernetesToleration
+from elyra.pipeline.properties import UploadFileProperty
 from elyra.pipeline.properties import VolumeMount
+
+
 from elyra.pipeline.registry import PipelineProcessorRegistry
 from elyra.pipeline.runtime_type import RuntimeProcessorType
 from elyra.pipeline.runtime_type import RuntimeTypeResources
@@ -574,6 +577,10 @@ class RuntimePipelineProcessor(PipelineProcessor):
 
     def add_mounted_volume(self, instance: VolumeMount, execution_object: Any, **kwargs) -> None:
         """Add VolumeMount instance to the execution object for the given runtime processor"""
+        pass
+
+    def add_upload_file(self, instance: UploadFileProperty, execution_object: Any, **kwargs) -> None:
+        """Add UploadFileProperty instance to the execution object for the given runtime processor"""
         pass
 
     def add_kubernetes_pod_annotation(self, instance: KubernetesAnnotation, execution_object: Any, **kwargs) -> None:

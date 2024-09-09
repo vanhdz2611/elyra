@@ -32,7 +32,7 @@
     "default": []
   },
   "mounted_volumes": {
-    "title": "Data Volumes",
+    "title": "hihi",
     "description": "Volumes to be mounted in this node. The specified Persistent Volume Claims must exist in the Kubernetes namespace where the node is executed or this node will not run.",
     "type": "array",
     "items": {
@@ -78,6 +78,24 @@
       }
     },
     "default": []
+  },
+  "upload_file": {
+    "title": "Upload File",
+    "description": "Upload a file to be used in the pipeline.",
+    "type": "object",
+    "properties": {
+      "file_path": {
+        "type": "string",
+        "title": "File Path",
+        "default": ""
+      }
+    },
+    "required": ["file_path"],
+    "uihints": {
+      "file_path": {
+        "ui:placeholder": "Path to file"
+      }
+    }
   },
   "kubernetes_pod_labels": {
     "title": "Kubernetes Pod Labels",

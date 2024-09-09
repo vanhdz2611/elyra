@@ -165,29 +165,31 @@ export const FormEditor: React.FC<IFormEditorProps> = ({
   }
 
   return (
-    <Form
-      schema={schema}
-      formData={formData}
-      formContext={{
-        editorServices: editorServices,
-        language: formData?.['Source']?.language ?? '',
-        allTags: allTags,
-        languageOptions: languageOptions,
-        trans: translator
-      }}
-      fields={componentRegistry?.renderers}
-      ArrayFieldTemplate={ArrayTemplate}
-      FieldTemplate={CustomFieldTemplate}
-      uiSchema={uiSchema}
-      onChange={(e: IChangeEvent<any>): void => {
-        setFormData(e.formData);
-        onChange(e.formData, e.errors.length > 0 || false);
-      }}
-      liveValidate={true}
-      noHtml5Validate={
-        /** noHtml5Validate is set to true to prevent the html validation from moving the focus when the live validate is called. */
-        true
-      }
-    />
+    <div>
+      <Form
+        schema={schema}
+        formData={formData}
+        formContext={{
+          editorServices: editorServices,
+          language: formData?.['Source']?.language ?? '',
+          allTags: allTags,
+          languageOptions: languageOptions,
+          trans: translator
+        }}
+        fields={componentRegistry?.renderers}
+        ArrayFieldTemplate={ArrayTemplate}
+        FieldTemplate={CustomFieldTemplate}
+        uiSchema={uiSchema}
+        onChange={(e: IChangeEvent<any>): void => {
+          setFormData(e.formData);
+          onChange(e.formData, e.errors.length > 0 || false);
+        }}
+        liveValidate={true}
+        noHtml5Validate={
+          /** noHtml5Validate is set to true to prevent the html validation from moving the focus when the live validate is called. */
+          true
+        }
+      />
+    </div>
   );
 };
