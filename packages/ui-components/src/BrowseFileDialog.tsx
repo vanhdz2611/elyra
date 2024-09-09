@@ -223,16 +223,26 @@ export const showBrowseFileDialog = async (
   const dialog = new Dialog({
     title: 'Select a file',
     body: browseFileDialogBody,
-    buttons: [Dialog.cancelButton(), Dialog.okButton({ label: 'Select' })]
+    buttons: [
+      Dialog.cancelButton(),
+      Dialog.okButton({ label: 'Select' }),
+      Dialog.okButton({ label: 'Edit' }) // Thêm nút Edit vào đây
+    ]
   });
 
   dialog.addClass(BROWSE_FILE_CLASS);
   document.body.className += ` ${BROWSE_FILE_OPEN_CLASS}`;
 
-  return dialog.launch().then((result: any) => {
+  return dialog.launch().then(async (result: any) => {
     document.body.className = document.body.className
       .replace(BROWSE_FILE_OPEN_CLASS, '')
       .trim();
+
+    if (result.button.label === 'Edit' && result.value.length) {
+      const selectedFile = result.value[0]; // Lấy tệp đã chọn
+      await manager.openOrReveal(selectedFile.path); // Mở tab chỉnh sửa tệp trong JupyterLab
+    }
+
     if (options.rootPath && result.button.accept && result.value.length) {
       const relativeToPath = options.rootPath.endsWith('/')
         ? options.rootPath

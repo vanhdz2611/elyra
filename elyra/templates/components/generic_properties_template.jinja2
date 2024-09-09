@@ -26,6 +26,21 @@
             "extensions": {{ component.extensions|tojson }}
           }
         },
+        "uploadfile": {
+          "type": "string",
+          "title": "Upload File Yaml",
+          "uihints": {
+            "ui:widget": "file",
+            "extensions": [".yaml"],
+            "accept": ".yaml"
+          }
+        },
+       "editButton": {
+      "type": "string",
+      "title": "Edit File",
+      "ui:widget": "custom",
+      "ui:action": "editFile"
+    },
         "runtime_image": {
           "type": "string",
           "title": "Runtime Image",
